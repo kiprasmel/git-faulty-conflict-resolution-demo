@@ -1,0 +1,51 @@
+touch package.json
+git add .
+git commit -m 1
+
+cat > package.json <<EOF
+{
+    "scripts": {
+        "prebuild": "node ./script/prebuild.js",
+        "test": "ts-node-dev ./test/run.ts",
+        "build": "yarn tsc -b",
+        "postbuild": "node ./script/postbuild.js",
+        "prepack": "yarn build"
+    },
+}
+EOF
+git add .
+git commit -m 1
+
+cat > package.json <<EOF
+{
+    "scripts": {
+        "prebuild": "node ./script/prebuild.js",
+        "test": "ts-node-dev ./test/run.ts",
+        "build": "yarn tsc -b && yarn --cwd nvim-git-rebase-todo build",
+        "postbuild": "node ./script/postbuild.js",
+        "prepack": "yarn build"
+    },
+}
+EOF
+git add .
+git commit -m 2
+
+cat > package.json <<EOF
+{
+    "scripts": {
+        "prebuild": "node ./script/prebuild.js",
+        "test": "ts-node-dev ./test/run.ts",
+        "build": "yarn test && yarn tsc -b && yarn --cwd nvim-git-rebase-todo build",
+        "postbuild": "node ./script/postbuild.js",
+        "prepack": "yarn build"
+    },
+}
+EOF
+git add .
+git commit -m 3
+
+
+
+# now rebase and put commit "2" before commit "3"
+
+
