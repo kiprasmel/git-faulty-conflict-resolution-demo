@@ -48,4 +48,6 @@ git commit -m 3
 
 # now rebase and put commit "2" before commit "3"
 
+# update: nevermind, it was git-rerere's fault.
+# understood when saw message "Resolved 'package.json' using previous resolution."
 
